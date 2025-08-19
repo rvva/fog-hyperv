@@ -14,6 +14,9 @@ module Fog
   module Hyperv
     extend Fog::Provider
 
+    # Modern fog constant format
+    autoload :Compute, File.expand_path('../hyperv/compute', __FILE__)
+
     module Errors
       class ServiceError < Fog::Errors::Error; end
       class VersionError < ServiceError
