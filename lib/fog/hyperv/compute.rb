@@ -145,7 +145,7 @@ module Fog
         attr_accessor :bake_optmap, :bake_json
 
         def initialize(options = {})
-          # require 'ostruct'
+          require 'ostruct'
           require 'fog/json'
           require 'logging'
 
@@ -454,7 +454,7 @@ module Fog
           raise Fog::Errors::MockNotImplemented, 'Not implementing skipping of json' if args[:_skip_json]
           raise Fog::Errors::MockNotImplemented, 'Not implementing skipping of uncamelize' if args[:_skip_uncamelize]
 
-          ret = Fog::JSON.decode(open(path).read)
+          ret = Fog::JSON.decode(File.read(path))
           ret = Fog::Hyperv.uncamelize(ret)
 
           ret = ret.map do |obj|
